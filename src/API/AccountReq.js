@@ -1,3 +1,4 @@
+import { useState } from "react";
 export const BASEURL= 'http://fitnesstrac-kr.herokuapp.com/api'
 export const STORAGE_KEY = 'replyToken'
 
@@ -85,43 +86,53 @@ export async function UserNameRoutines(){
     }
 }
 
-export async function GetAllActivities(props){
-    try{
- 
-        const TOKEN_STRING = localStorage.getItem('replyToken')
+// export async function GetAllActivities(props){
+//     try{
 
-        const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities',{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                     },
+//         const [activitie,setActivitie] = useState([])
+  
+        
+//         const TOKEN_STRING = localStorage.getItem('replyToken')
+
+//         const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities',{
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                      },
 
 
-            }).then(response => response.json()).then(result =>{
-                console.log(result)
-            })
+//             }).then(response => response.json()).then(result =>{
+//                 console.log(result)
+//                 setActivitie(result)
+                
+                
+                
+
+//             })
 
             
 
-    }catch(error){
-        throw Error;
-    }
-}
+//     }catch(error){
+//         throw Error;
+//     }
+// }
 
-export async function getRoutines(){
-    try{
-        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines`,{
-            headers:{
-                'Content-Type':'application/json',
-            },
-        }).then(response => response.json()).then(result => {
-            console.log(result)
-        })
+// export async function getRoutines(){
+//     try{
+//         const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines`,{
+//             headers:{
+//                 'Content-Type':'application/json',
+//             },
+//         }).then(response => response.json()).then(result => {
+//             console.log(result)
+//             console.log(result[1].activities)
+            
+//         })
 
-    }catch(error){
-        throw Error(error)
-    }
-}
+//     }catch(error){
+//         throw Error(error)
+//     }
+// }
 
 
 
