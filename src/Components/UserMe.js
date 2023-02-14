@@ -1,5 +1,5 @@
 function UserMe(){
-    const user = localStorage.getItem('TOKEN_STORAGE_KEY')
+    const user = localStorage.getItem('replyToken')
 
 
     return(
@@ -14,7 +14,7 @@ function UserMe(){
                     }
                 }).then(response => response.json()).then(result=>{
                     console.log(result)
-                    console.log(user)
+
                 })
 
             }catch(error){
@@ -22,7 +22,7 @@ function UserMe(){
             }
 
         }}>
-            <button>TEST ME</button>
+            <button>TEST GETME</button>
         </form>
   
     )

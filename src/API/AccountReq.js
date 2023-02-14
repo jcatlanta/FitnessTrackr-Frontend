@@ -1,3 +1,4 @@
+import { useState } from "react";
 export const BASEURL= 'http://fitnesstrac-kr.herokuapp.com/api'
 export const STORAGE_KEY = 'replyToken'
 
@@ -23,7 +24,7 @@ export async function CreateAccount(props){
         )
         const json = await response.json();
         console.log(json)
-        const replyToken = json.data.token;
+        const replyToken = json.token;
 
 
         if (replyToken) {
@@ -57,7 +58,8 @@ export async function LoginAccount(props){
         )
         const json = await response.json();
         console.log(json)
-        const replyToken = json.data.token;
+        const replyToken = json.token;
+        console.log(replyToken)
 
 
         if (replyToken) {
@@ -84,28 +86,53 @@ export async function UserNameRoutines(){
     }
 }
 
-export async function GetAllActivities(props){
-    try{
-        const TOKEN_STRING = localStorage.getItem('TOKEN_STORAGE_KEY')
-        const body = JSON.stringify({
-            name : props.name,
-            activities: props.activities
-        })
+// export async function GetAllActivities(props){
+//     try{
+
+//         const [activitie,setActivitie] = useState([])
+  
+        
+//         const TOKEN_STRING = localStorage.getItem('replyToken')
+
+//         const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities',{
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                      },
 
 
-        const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${TOKEN_STRING}`
-            },
-            body
-        })
+//             }).then(response => response.json()).then(result =>{
+//                 console.log(result)
+//                 setActivitie(result)
+                
+                
+                
 
-    }catch(error){
-        throw Error;
-    }
-}
+//             })
+
+            
+
+//     }catch(error){
+//         throw Error;
+//     }
+// }
+
+// export async function getRoutines(){
+//     try{
+//         const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines`,{
+//             headers:{
+//                 'Content-Type':'application/json',
+//             },
+//         }).then(response => response.json()).then(result => {
+//             console.log(result)
+//             console.log(result[1].activities)
+            
+//         })
+
+//     }catch(error){
+//         throw Error(error)
+//     }
+// }
 
 
 
