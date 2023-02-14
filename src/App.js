@@ -5,9 +5,12 @@ import Login from './Components/login';
 import UserMe from './Components/UserMe';
 import GetUsersRoutines from './Components/UsersRoutine';
 import GetActivities from './Components/getActivities';
-
+import LogOut from './Components/LogOut';
+import GetRoutines from './Components/getAllRoutines';
 
 function App() {
+  // const [token,setToken] = useState(localStorage.getItem("replyToken"))
+
   return (
     <div className="App">
       <div>
@@ -17,6 +20,9 @@ function App() {
         <UserMe/>
         <GetUsersRoutines/>
         <GetActivities/>
+        <GetRoutines/>
+        {/* {(token) ?<LogOut/> :null} */}
+        
       </div>
 
     </div>

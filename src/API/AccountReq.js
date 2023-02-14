@@ -23,7 +23,7 @@ export async function CreateAccount(props){
         )
         const json = await response.json();
         console.log(json)
-        const replyToken = json.data.token;
+        const replyToken = json.token;
 
 
         if (replyToken) {
@@ -57,7 +57,8 @@ export async function LoginAccount(props){
         )
         const json = await response.json();
         console.log(json)
-        const replyToken = json.data.token;
+        const replyToken = json.token;
+        console.log(replyToken)
 
 
         if (replyToken) {
@@ -86,24 +87,39 @@ export async function UserNameRoutines(){
 
 export async function GetAllActivities(props){
     try{
-        const TOKEN_STRING = localStorage.getItem('TOKEN_STORAGE_KEY')
-        const body = JSON.stringify({
-            name : props.name,
-            activities: props.activities
-        })
-
+ 
+        const TOKEN_STRING = localStorage.getItem('replyToken')
 
         const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities',{
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${TOKEN_STRING}`
-            },
-            body
-        })
+                     },
+
+
+            }).then(response => response.json()).then(result =>{
+                console.log(result)
+            })
+
+            
 
     }catch(error){
         throw Error;
+    }
+}
+
+export async function getRoutines(){
+    try{
+        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines`,{
+            headers:{
+                'Content-Type':'application/json',
+            },
+        }).then(response => response.json()).then(result => {
+            console.log(result)
+        })
+
+    }catch(error){
+        throw Error(error)
     }
 }
 
