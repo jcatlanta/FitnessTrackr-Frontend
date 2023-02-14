@@ -71,7 +71,40 @@ export async function LoginAccount(props){
 }
 
 export async function UserNameRoutines(){
-    
+    try{
+        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/albert/routines',{
+            headers:{
+                'Content-Type' : 'application/json',
+            }
+        }).then(response => response.json()).then(result =>{
+            console.log(result)
+        })
+    }catch(error){
+        throw Error("Failed to get user's Routines", error)
+    }
+}
+
+export async function GetAllActivities(props){
+    try{
+        const TOKEN_STRING = localStorage.getItem('TOKEN_STORAGE_KEY')
+        const body = JSON.stringify({
+            name : props.name,
+            activities: props.activities
+        })
+
+
+        const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${TOKEN_STRING}`
+            },
+            body
+        })
+
+    }catch(error){
+        throw Error;
+    }
 }
 
 

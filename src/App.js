@@ -3,6 +3,9 @@ import './App.css';
 import SignUp from './Components/signup';
 import Login from './Components/login';
 import UserMe from './Components/UserMe';
+import GetUsersRoutines from './Components/UsersRoutine';
+import GetActivities from './Components/getActivities';
+
 
 function App() {
   return (
@@ -12,6 +15,8 @@ function App() {
         <SignUp/>
         <Login/>
         <UserMe/>
+        <GetUsersRoutines/>
+        <GetActivities/>
       </div>
 
     </div>
