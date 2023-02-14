@@ -1,18 +1,18 @@
-// import {useState} from 'react';
+import {useState} from 'react';
 
-// function LogOut(){
+function LogOut(){
 
-//     const [token,setToken] = useState(localStorage.getItem('TOKEN_STORAGE_KEY'))
+    const [token,setToken] = useState(localStorage.getItem('replyToken'))
 
-//     return(
-//       <button onClick={
-//         () => {
-//           localStorage.clear('TOKEN_STORAGE_KEY')
-//           setToken('');
-//           alert('You have been logged off')
-//         }
-//       }>Log Out</button>
-//     )
-//   }
+    return(
+      <button onClick={
+        () => {
+          localStorage.clear('TOKEN_STORAGE_KEY')
+          setToken('');
+          alert('You have been logged off')
+        }
+      }>Log Out</button>
+    )
+  }
 
-//   export default LogOut;
+  export default LogOut;

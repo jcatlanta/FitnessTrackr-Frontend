@@ -8,9 +8,10 @@ import GetActivities from './Components/getActivities';
 import LogOut from './Components/LogOut';
 import GetRoutines from './Components/getAllRoutines';
 import { Route, BrowserRouter, Link, Routes } from 'react-router-dom';
+import PostActivitie from './Components/postActivities';
 
 function App() {
-  // const [token,setToken] = useState(localStorage.getItem("replyToken"))
+  const [token,setToken] = useState(localStorage.getItem('replyToken'))
 
   return (
     
@@ -21,7 +22,7 @@ function App() {
           <li><Link to='/login'>Login</Link></li>
     
           </ul>
-          {/* {(token) ?<LogOut/> :null} */}
+          {(token) ?<LogOut/> :null}
           
         </div>
         <h1>Welcome to FitnessTracker</h1>
@@ -31,7 +32,8 @@ function App() {
           <Route path='/login' element={<Login/>}/>
 
           </Routes>
-  
+          
+          <PostActivitie />
           <UserMe/>
           <GetUsersRoutines/>
           <GetActivities/>
