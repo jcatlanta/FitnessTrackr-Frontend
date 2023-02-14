@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, {useState,useEffect} from 'react'
 import './App.css';
+import SignUp from './Components/signup';
+import Login from './Components/login';
+import UserMe from './Components/UserMe';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1>Welcome to FitnessTracker</h1>
+        <SignUp/>
+        <Login/>
+        <UserMe/>
+      </div>
+
     </div>
   );
 }
