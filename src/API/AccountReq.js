@@ -1,7 +1,9 @@
 import { useState } from "react";
+import UserMe from "../Components/UserMe";
 export const BASEURL= 'http://fitnesstrac-kr.herokuapp.com/api'
 export const STORAGE_KEY = 'replyToken'
 export const USER_ID = 'userId'
+
 
 
 export async function CreateAccount(props){
@@ -66,6 +68,7 @@ export async function LoginAccount(props){
         console.log(replyToken)
         const userId = json.user.id 
         localStorage.setItem(`${USER_ID}`,userId)
+        alert('Logged in successful!')
 
 
 
@@ -81,7 +84,8 @@ export async function LoginAccount(props){
 
 export async function UserNameRoutines(){
     try{
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/albert/routines',{
+        const username = localStorage.getItem('signedInUser')
+        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`,{
             headers:{
                 'Content-Type' : 'application/json',
             }
@@ -90,6 +94,42 @@ export async function UserNameRoutines(){
         })
     }catch(error){
         throw Error("Failed to get user's Routines", error)
+    }
+}
+
+
+export async function getActivityIdR(activitieId){
+    try{
+   
+        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities/${activitieId}`,{
+            headers:{
+                'Content-Type': 'application/json'
+            },
+        }).then(response => response.json()).then(result =>{
+            console.log(result)
+        })
+
+    }catch(error){
+        throw Error(error)
+    }
+}
+
+export async function patchActivitieByID(props){
+    try{
+        const activitieId = props.id
+              
+        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/activities/${activitieId}`,{
+            method:"PATCH",
+            body:JSON.stringify({
+                name: props.name,
+                description: props.description
+            })
+        }).then(response => response.json()).then(result => {
+            console.log(result)
+        })
+        
+    }catch(error){
+        throw Error(error)
     }
 }
 

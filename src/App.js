@@ -10,14 +10,15 @@ import GetRoutines from './Components/getAllRoutines';
 import { Route, BrowserRouter, Link, Routes } from 'react-router-dom';
 import PostActivitie from './Components/postActivities';
 import PostRoutines from './Components/postRoutines';
-
+import ActIdRoutine from './Components/activityIdByRoutine';
 
 const replyToken ='test_token'
 
 
 function App() {
   const [token,setToken] = useState(localStorage.getItem('replyToken'))
-
+   
+  
 
   
 
@@ -30,8 +31,8 @@ function App() {
           <li><Link to='/login'>Login</Link></li>
           <li><Link to='/getactivities'>Activities</Link></li>
           <li><Link to='/getroutines'>Routines</Link></li>
-          <li><Link to='/postactivitie'>Create Activity</Link></li>
-          <li><Link to='/postroutines'>Create Routine</Link></li>
+          {(token)? <li><Link to='/postactivitie'>Create Activity</Link></li>:null}
+          {(token)?<li><Link to='/postroutines'>Create Routine</Link></li>:null}
           <li><Link to='/userme'>TestGetMe</Link></li>
           <li><Link to='/getusersroutines'>Test Get User Routines</Link></li>
 
@@ -54,6 +55,8 @@ function App() {
           <Route path='/getusersroutines' element={<GetUsersRoutines/>}/>
 
           </Routes>
+
+          
  
      
 
