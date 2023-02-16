@@ -1,11 +1,17 @@
 import { useState } from "react";
+<<<<<<< Updated upstream
 import UserMe from "../Components/UserMe";
+=======
+>>>>>>> Stashed changes
 export const BASEURL= 'http://fitnesstrac-kr.herokuapp.com/api'
 export const STORAGE_KEY = 'replyToken'
 export const USER_ID = 'userId'
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 export async function CreateAccount(props){
     const body = JSON.stringify({
          
@@ -68,7 +74,10 @@ export async function LoginAccount(props){
         console.log(replyToken)
         const userId = json.user.id 
         localStorage.setItem(`${USER_ID}`,userId)
+<<<<<<< Updated upstream
         alert('Logged in successful!')
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -84,8 +93,12 @@ export async function LoginAccount(props){
 
 export async function UserNameRoutines(){
     try{
+<<<<<<< Updated upstream
         const username = localStorage.getItem('signedInUser')
         const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/users/${username}/routines`,{
+=======
+        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/albert/routines',{
+>>>>>>> Stashed changes
             headers:{
                 'Content-Type' : 'application/json',
             }
@@ -97,6 +110,7 @@ export async function UserNameRoutines(){
     }
 }
 
+<<<<<<< Updated upstream
 
 export async function getActivityIdR(activitieId){
     try{
@@ -133,6 +147,8 @@ export async function patchActivitieByID(props){
     }
 }
 
+=======
+>>>>>>> Stashed changes
 // export async function GetAllActivities(props){
 //     try{
 
