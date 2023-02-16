@@ -1,6 +1,7 @@
 import { useState } from "react";
 export const BASEURL= 'http://fitnesstrac-kr.herokuapp.com/api'
 export const STORAGE_KEY = 'replyToken'
+export const USER_ID = 'userId'
 
 
 export async function CreateAccount(props){
@@ -25,6 +26,9 @@ export async function CreateAccount(props){
         const json = await response.json();
         console.log(json)
         const replyToken = json.token;
+        const userId = json.user.id 
+        localStorage.setItem(`${USER_ID}`,userId)
+        console.log(userId)
 
 
         if (replyToken) {
@@ -60,6 +64,9 @@ export async function LoginAccount(props){
         console.log(json)
         const replyToken = json.token;
         console.log(replyToken)
+        const userId = json.user.id 
+        localStorage.setItem(`${USER_ID}`,userId)
+
 
 
         if (replyToken) {

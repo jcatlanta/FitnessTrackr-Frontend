@@ -13,13 +13,13 @@ function PostActivitie(){
             
             const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/activities',{
                 method:"POST",
-                header:{
+                headers:{
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${user}`
                 },
                 body: JSON.stringify({
-                    name: props.name,
-                    description: props.description
+                    name,
+                    description
                 })
             }).then(response =>response.json()).then(result=>{
                 console.log(result)
@@ -50,6 +50,7 @@ function PostActivitie(){
 
             }}
             >
+                <h3>Create new Activity</h3>
                 <label>Title :
                     <input placeholder="Activity Name"
                     onChange={handleName}
