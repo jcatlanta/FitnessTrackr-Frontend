@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home'
+import Profile from './components/Profile';
+// import Posts from './components/Posts.jsx';
+import Navbar from './components/Navbar';
+import Signup from './components/Signup.jsx';
+import Login from './components/Login.jsx';
 
+// import SinglePost from './components/SinglePost'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React TEST TEST 
-        </a>
-      </header>
+   <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="profile" element={<Profile />} />
+        {/* <Route path="posts" element={<Posts />} /> */}
+        {/* <Route path="/posts/:id" element={<SinglePost/>} /> */}
+        <Route path="navbar" element = {<Navbar />}/>
+        <Route path="signup" element = {<Signup />}/>
+        <Route path="login" element = {<Login />}/>
+      </Routes>        
+ 
     </div>
   );
 }
+
 
 export default App;
