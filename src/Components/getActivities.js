@@ -1,13 +1,15 @@
-import { GetAllActivities } from "../API/AccountReq";
+import { getActivityIdR, GetAllActivities } from "../API/AccountReq";
 import { useState } from "react";
-
-
+import ActIdRoutine from "./activityIdByRoutine";
+import { patchActivitieByID } from "../API/AccountReq";
+import EditForm from "./EditForm";
 
 
 function GetActivities(){
 
     const [activities,setActivities] = useState([]);
-
+    const [activityId,setActivityId] = useState('')
+    const [edit,SetEdit]= useState(false)
 
     async function GetAllActivities(props){
     try{
@@ -58,7 +60,7 @@ function GetActivities(){
                 // }
             }}>
                 <button onClick={GetAllActivities}>Get Activities</button>
-
+                
                 {
                     activities.map((activitie)=>{
                         return(
@@ -68,6 +70,21 @@ function GetActivities(){
                                 <li>Name: {activitie.name}</li>
                                 <li>Description: {activitie.description}</li>
                                 </ul>
+                                <button onClick={
+                                    (event) => {
+                                        setActivityId(activitie.id);
+                                        console.log(activitie.id)
+                                      console.log  (getActivityIdR(activityId));
+                                }}>Test </button>
+                                <button 
+                                onClick={(e)=>{
+                                    SetEdit(true);
+                                    patchActivitieByID()
+                                }
+                                }>Edit</button>
+                                <EditForm
+                                activitieId={activityId}
+                                 />
                             </div>
                         )
                     })
